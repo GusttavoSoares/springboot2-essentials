@@ -1,6 +1,7 @@
 package br.com.ifsp.springboot2.controller;
 
 import br.com.ifsp.springboot2.domain.Anime;
+import br.com.ifsp.springboot2.service.AnimeService;
 import br.com.ifsp.springboot2.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -12,17 +13,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController // retorno dessa classe é apenas string
-@RequestMapping("anime")
+@RequestMapping("animes")
 @Log4j2
-@RequiredArgsConstructor
+@RequiredArgsConstructor // faz construtor com as variáveis que utilizam final
 
 public class AnimeController {
     private final DateUtil dateUtil;
+    private final AnimeService animeService;
 
 
-    @GetMapping(path = "list")
+    @GetMapping
     public List<Anime> list() {
         log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
-        return List.of(new Anime("Boku No Hero"), new Anime("Mirai Nikki"));
+        return animeService.listAll();
     }
 }

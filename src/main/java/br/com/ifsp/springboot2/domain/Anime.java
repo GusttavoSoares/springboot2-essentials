@@ -1,20 +1,12 @@
 package br.com.ifsp.springboot2.domain;
 
-public class Anime {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data // gera get, set, equals, hashcode
+@AllArgsConstructor // gera construtores com todos os valores
+public class Anime { // Essa classe representa o que tem no banco de dados
+    private Long id;
     private String name;
 
-    public Anime(String name) {
-        this.name = name;
-    }
-
-    public Anime() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
