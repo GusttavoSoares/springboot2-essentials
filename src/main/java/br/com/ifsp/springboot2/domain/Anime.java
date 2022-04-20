@@ -2,10 +2,20 @@ package br.com.ifsp.springboot2.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data // gera get, set, equals, hashcode
-@AllArgsConstructor // gera construtores com todos os valores
-public class Anime { // Essa classe representa o que tem no banco de dados
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class Anime {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
