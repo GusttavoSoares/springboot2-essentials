@@ -1,6 +1,7 @@
 package br.com.ifsp.springboot2.service;
 
 import br.com.ifsp.springboot2.domain.Anime;
+import br.com.ifsp.springboot2.exception.BadRequestException;
 import br.com.ifsp.springboot2.mapper.AnimeMapper;
 import br.com.ifsp.springboot2.repository.AnimeRepository;
 import br.com.ifsp.springboot2.requests.AnimePostRequestBody;
@@ -29,7 +30,7 @@ public class AnimeService { // classe responsável pelas regras de negócio
 
     public Anime findByIdOrThrowBadRequestException(long id) {
         return animeRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Anime not Found"));
+                .orElseThrow(() -> new BadRequestException("Anime not Found"));
     }
 
     public Anime save(AnimePostRequestBody animePostRequestBody){
