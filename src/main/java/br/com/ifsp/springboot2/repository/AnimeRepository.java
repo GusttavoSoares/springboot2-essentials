@@ -7,4 +7,5 @@ import java.util.List;
 // vai ser a conexão com o banco de dados
 public interface AnimeRepository extends JpaRepository<Anime, Long> { // id é do tipo Long
 
+    List<Anime> findByName(String name);
 }
