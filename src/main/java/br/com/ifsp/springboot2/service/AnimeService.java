@@ -7,9 +7,8 @@ import br.com.ifsp.springboot2.repository.AnimeRepository;
 import br.com.ifsp.springboot2.requests.AnimePostRequestBody;
 import br.com.ifsp.springboot2.requests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
@@ -33,9 +32,10 @@ public class AnimeService { // classe responsável pelas regras de negócio
                 .orElseThrow(() -> new BadRequestException("Anime not Found"));
     }
 
+    @Transactional
     public Anime save(AnimePostRequestBody animePostRequestBody){
-
         return animeRepository.save(AnimeMapper.INSTANCE.toAnime(animePostRequestBody));
+
     }
 
     public void delete(long id) {
