@@ -25,6 +25,10 @@ public class AnimeService { // classe responsável pelas regras de negócio
         return animeRepository.findAll(pageable);
     }
 
+    public List<Anime> listAllNonPageable() {
+        return animeRepository.findAll();
+    }
+
     public List<Anime> findByName(String name) {
         return animeRepository.findByName(name);
     }
@@ -50,4 +54,6 @@ public class AnimeService { // classe responsável pelas regras de negócio
         anime.setId(savedAnime.getId());
         animeRepository.save(anime);
     }
+
+
 }
