@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AnimeService { // classe responsável pelas regras de negócio
+public class AnimeService {
 
     private final AnimeRepository animeRepository;
 
@@ -39,9 +39,8 @@ public class AnimeService { // classe responsável pelas regras de negócio
     }
 
     @Transactional
-    public Anime save(AnimePostRequestBody animePostRequestBody){
+    public Anime save(AnimePostRequestBody animePostRequestBody) {
         return animeRepository.save(AnimeMapper.INSTANCE.toAnime(animePostRequestBody));
-
     }
 
     public void delete(long id) {
@@ -54,6 +53,4 @@ public class AnimeService { // classe responsável pelas regras de negócio
         anime.setId(savedAnime.getId());
         animeRepository.save(anime);
     }
-
-
 }
