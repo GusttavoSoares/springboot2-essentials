@@ -10,10 +10,12 @@ import java.util.List;
 
 @Configuration
 public class IfspWebMvcConfigurer implements WebMvcConfigurer {
+
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-       PageableHandlerMethodArgumentResolver pageHandler = new PageableHandlerMethodArgumentResolver();
-       pageHandler.setFallbackPageable(PageRequest.of(0,5));
-       resolvers.add(pageHandler);
+        PageableHandlerMethodArgumentResolver pageHandler = new PageableHandlerMethodArgumentResolver();
+        pageHandler.setFallbackPageable(PageRequest.of(0, 5));
+        resolvers.add(pageHandler);
     }
 }
+
